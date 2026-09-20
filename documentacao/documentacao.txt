@@ -1,0 +1,49 @@
+Disciplina: Linguagem de Programação 1
+Docente: Cláudio Rodolfo Sousa de Oliveira
+Equipe: Fabrício Lisboa Prado, João Vítor Carvalho Souza, Rhuan Rocha Rodrigues.
+Projeto: Sistema de Clínica Médica (Grupo D)
+
+1. Descrição do Problema
+Nas clínicas médicas existe a necessidade de um sistema para conseguir gerenciar o fluxo de atendimento, o que inclui o cadastro de pacientes, profissionais de saúde, especialidades médicas e o controle das consultas. Sem um sistema adequado, a clínica corre o risco de ter agendamentos que conflitam, perder informações e ter dificuldade para acompanhar o histórico de atendimentos.
+
+2. Objetivo do Sistema
+O objetivo do projeto é desenvolver um sistema em Java usando dos conceitos de Programação Orientada a Objetos (POO) para gerenciar o funcionamento de uma clínica médica. O sistema deve permitir cadastrar e consultar especialidades, profissionais e pacientes, agendar, concluir e cancelar consultas, controlar regras de negócio e gerar um relatório.
+
+3. Descrição das Funcionalidades
+- Cadastrar Especialidade: Registra uma nova área (ex: Cardiologia).
+- Cadastrar Profissional: Registra um médico pelo CRM e obriga a ter uma especialidade.
+- Cadastrar Paciente: Salva os dados do paciente, usando o CPF como chave primária.
+- Agendar Consulta: Cria uma consulta ligando o paciente, o profissional e a data e hora, passando pelas regras de negócio.
+- Concluir Consulta: Marca uma consulta que já aconteceu como realizada e guarda a observação do médico.
+- Cancelar Consulta: Cancela uma consulta (o sistema bloqueia se ela já estiver sido realizada).
+- Listas (Especialidades / Profissionais / Pacientes): Exibe os dados cadastrados no sistema.
+- Consultas por Paciente / Profissional: Mostra apenas as consultas de um CPF ou CRM específico.
+- Listar Consultas (Agendadas / Todas): Exibe as consultas ativas ou o histórico completo da clínica.
+- Relatório Geral: Mostra os totais cadastrados na clínica.
+
+4. Descrição das Classes
+- Especialidade: Representa a área de atuação do médico. Tem os atributos código, nome e descrição. 
+- Paciente: Representa quem vai ser atendido. Tem os atributos cpf, nome, telefone e data de nascimento. 
+- Profissional: Representa o médico. Tem os atributos crm, nome, telefone e um objeto do tipo Especialidade.
+- Consulta: Controla o agendamento. Tem código, paciente (objeto), profissional (objeto), data e hora, além dos status de realizada ou cancelada e a observação médica.
+- Clínica: É a classe principal. Ela guarda os vetores de especialidades, profissionais, pacientes e consultas. Também é nela que ficam os métodos de regras de negócio e validações.
+- Main: Classe com o método principal para rodar o menu interativo no console e coletar os dados .
+
+5. Relacionamentos entre as Classes
+- Profissional e Especialidade (N:1): Cada profissional possui uma especialidade, e vários profissionais podem ter a mesma especialidade.
+- Consulta e Paciente (N:1): Uma consulta pertence a um único paciente, mas o paciente pode ter várias consultas.
+- Consulta e Profissional (N:1): A consulta é realizada por um profissional, que terá várias consultas.
+- Clínica (1:N): A classe Clínica comanda as listas de especialidades, profissionais, pacientes e consultas do sistema.
+
+6. Regras de Negócio
+- 1: Não é possível agendar para um paciente inexistente. 
+- 2: Um profissional não pode ter duas consultas no mesmo horário.
+- 3: A consulta exige um paciente e um profissional.
+- 4: O profissional precisa de uma especialidade.
+- 5: Não permitir cancelamento de consulta já realizada ou cancelada.
+- 6: Ao concluir a consulta, ela é marcada como realizada e recebe a string de observação médica.
+
+7. Dificuldades Encontradas durante o Desenvolvimento
+- Definir as classes: Definir corretamente quais atributos, métodos e responsabilidades ficariam na classe Clínica e quais ficariam nas outras classes.
+- Aplicar a recursividade: Como a maioria das operações de um sistema de cadastro é possível resolver facilmente com laços de repetição padrões, foi complicado de encaixar a recursividade exigida pelo projeto de forma coerente. 
+- Controle de regra de negócio: Garantir que as validações bloqueassem tentativas inválidas nas consultas, como não permitir duas consultas de um só profissional no mesmo horário.
