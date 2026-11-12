@@ -6,8 +6,6 @@ import classes.pessoas.Pessoa;
 public class Profissional extends Pessoa{
 
     private String crm;
-    private String nome;
-    private String telefone;
     private Especialidade especialidade;
 
     public Profissional(String crm, String nome, String telefone, Especialidade especialidade) {
