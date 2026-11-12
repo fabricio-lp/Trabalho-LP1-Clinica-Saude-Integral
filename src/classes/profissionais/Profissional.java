@@ -33,7 +33,7 @@ public class Profissional extends Pessoa{
     }
 
     public String toString() {
-        return "Profissional [CRM= " + crm + ", Nome= " + nome + ", Telefone= " + telefone
+        return "Profissional [CRM= " + crm + ", Nome= " + getNome() + ", Telefone= " + getTelefone()
                 + ", Especialidade= " + especialidade.getNome() + "]";
     }
 }
