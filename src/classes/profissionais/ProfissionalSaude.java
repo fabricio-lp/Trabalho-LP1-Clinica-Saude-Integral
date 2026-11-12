@@ -8,7 +8,7 @@ public abstract class ProfissionalSaude extends Pessoa{
     private String registroProfissional;
     private Especialidade especialidade;
 
-    public ProfissionalSaude(String registroProfissional, String nome, String telefone, Especialidade especialidade) {
+    public ProfissionalSaude(String nome, String telefone, String registroProfissional, Especialidade especialidade) {
         super(nome, telefone);
         this.registroProfissional = registroProfissional;
         this.especialidade = especialidade;

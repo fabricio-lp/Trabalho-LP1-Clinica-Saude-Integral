@@ -4,7 +4,7 @@ import classes.Especialidade;
 
 public class Medico extends ProfissionalSaude {
     
-    public Medico(String registroProfissional, String nome, String telefone, Especialidade especialidade) {
+    public Medico(String nome, String telefone, String registroProfissional, Especialidade especialidade) {
         super(nome, telefone, registroProfissional, especialidade);
     }
 

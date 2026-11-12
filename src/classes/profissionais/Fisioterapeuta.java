@@ -4,7 +4,7 @@ import classes.Especialidade;
 
 public class Fisioterapeuta extends ProfissionalSaude {
     
-    public Fisioterapeuta(String registroProfissional, String nome, String telefone, Especialidade especialidade) {
+    public Fisioterapeuta(String nome, String telefone, String registroProfissional, Especialidade especialidade) {
         super(nome, telefone, registroProfissional, especialidade);
     }
 
