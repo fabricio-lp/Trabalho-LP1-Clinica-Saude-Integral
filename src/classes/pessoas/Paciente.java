@@ -1,16 +1,13 @@
-package classes;
+package classes.pessoas;
 
-public class Paciente {
+public class Paciente extends Pessoa {
 
     private String cpf;
-    private String nome;
-    private String telefone;
     private String dataNascimento;
 
     public Paciente(String cpf, String nome, String telefone, String dataNascimento) {
+        super(nome, telefone);
         this.cpf = cpf;
-        this.nome = nome;
-        this.telefone = telefone;
         this.dataNascimento = dataNascimento;
     }
 
@@ -20,22 +17,6 @@ public class Paciente {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public String getDataNascimento() {

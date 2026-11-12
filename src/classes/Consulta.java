@@ -1,5 +1,8 @@
 package classes;
 
+import classes.pessoas.Paciente;
+import classes.profissionais.Profissional;
+
 public class Consulta {
 
     private int codigo;
