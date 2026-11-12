@@ -24,6 +24,10 @@ public abstract class ProfissionalSaude extends Pessoa{
         this.registroProfissional = registroProfissional;
     }
 
+    public String getRegistroFormatado() {
+        return getTipoRegistro() + "= " + registroProfissional;
+    }
+
     public Especialidade getEspecialidade() {
         return especialidade;
     }
@@ -33,7 +37,7 @@ public abstract class ProfissionalSaude extends Pessoa{
     }
 
     public String toString() {
-        return "Profissional [CRM= " + registroProfissional + ", Nome= " + getNome() + ", Telefone= " + getTelefone()
+        return "Profissional [" + getRegistroFormatado() + ", Nome= " + getNome() + ", Telefone= " + getTelefone()
                 + ", Especialidade= " + especialidade.getNome() + "]";
     }
 }

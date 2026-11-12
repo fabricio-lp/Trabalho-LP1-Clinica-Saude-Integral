@@ -1,5 +1,15 @@
 package classes.profissionais;
 
-public class Fisioterapeuta {
+import classes.Especialidade;
+
+public class Fisioterapeuta extends ProfissionalSaude {
     
+    public Fisioterapeuta(String registroProfissional, String nome, String telefone, Especialidade especialidade) {
+        super(nome, telefone, registroProfissional, especialidade);
+    }
+
+    public String getTipoRegistro(){
+    return "CREFITO"; 
+    }
+
 }
