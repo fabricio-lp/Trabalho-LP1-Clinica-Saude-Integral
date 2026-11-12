@@ -1,14 +1,14 @@
 package classes;
 
 import classes.pessoas.Paciente;
-import classes.profissionais.Profissional;
+import classes.profissionais.ProfissionalSaude;
 
 public class Clinica {
 
     private String nome;
 
     private Especialidade[] especialidades = new Especialidade[100];
-    private Profissional[] profissionais = new Profissional[100];
+    private ProfissionalSaude[] profissionais = new ProfissionalSaude[100];
     private Paciente[] pacientes = new Paciente[100];
     private Consulta[] consultas = new Consulta[100];
 
@@ -44,7 +44,7 @@ public class Clinica {
             return;
         }
 
-        Profissional prof = new Profissional(crm, nome, telefone, esp);
+        ProfissionalSaude prof = new ProfissionalSaude(crm, nome, telefone, esp);
         profissionais[totalProfissionais] = prof;
         totalProfissionais++;
         System.out.println("Profissional cadastrado: " + prof.toString());
@@ -71,7 +71,7 @@ public class Clinica {
             return;
         }
 
-        Profissional profissional = null;
+        ProfissionalSaude profissional = null;
         for (int i = 0; i < totalProfissionais; i++) {
             String crmAtual = profissionais[i].getCrm();
             if (crmAtual.equals(crmProfissional)) {
@@ -85,7 +85,7 @@ public class Clinica {
         }
 
         for (int i = 0; i < totalConsultas; i++) {
-            Profissional profDaConsulta = consultas[i].getProfissional();
+            ProfissionalSaude profDaConsulta = consultas[i].getProfissional();
             String crmDaConsulta = profDaConsulta.getCrm();
             String horaDaConsulta = consultas[i].getDataHora();
             boolean estaCancelada = consultas[i].isCancelada();
@@ -159,7 +159,7 @@ public class Clinica {
     public void listarConsultasPorProfissional(String crm) {
         System.out.println("\n--- Consultas do Profissional ---");
         for (int i = 0; i < totalConsultas; i++) {
-            Profissional profDaConsulta = consultas[i].getProfissional();
+            ProfissionalSaude profDaConsulta = consultas[i].getProfissional();
             String crmDaConsulta = profDaConsulta.getCrm();
             if (crmDaConsulta.equals(crm)) {
                 System.out.println("  " + consultas[i].toString());

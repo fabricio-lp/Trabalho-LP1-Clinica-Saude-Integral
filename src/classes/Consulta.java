@@ -1,19 +1,19 @@
 package classes;
 
 import classes.pessoas.Paciente;
-import classes.profissionais.Profissional;
+import classes.profissionais.ProfissionalSaude;
 
 public class Consulta {
 
     private int codigo;
     private Paciente paciente;
-    private Profissional profissional;
+    private ProfissionalSaude profissional;
     private String dataHora;
     private boolean realizada = false;
     private boolean cancelada = false;
     private String observacao = "";
 
-    public Consulta(int codigo, Paciente paciente, Profissional profissional, String dataHora) {
+    public Consulta(int codigo, Paciente paciente, ProfissionalSaude profissional, String dataHora) {
         this.codigo = codigo;
         this.paciente = paciente;
         this.profissional = profissional;
@@ -71,11 +71,11 @@ public class Consulta {
         this.paciente = paciente;
     }
 
-    public Profissional getProfissional() {
+    public ProfissionalSaude getProfissional() {
         return profissional;
     }
 
-    public void setProfissional(Profissional profissional) {
+    public void setProfissional(ProfissionalSaude profissional) {
         this.profissional = profissional;
     }
 
