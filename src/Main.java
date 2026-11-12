@@ -67,17 +67,29 @@ public class Main {
 
                 case 2:
                     System.out.println("\n--- Cadastro de Profissional ---");
-                    clinica.listarEspecialidades();
-                    System.out.print("CRM: ");
-                    String crm = scanner.nextLine();
+                    System.out.println("[1]  Médico");
+                    System.out.println("[2]  Fisioterapeuta");
+                    System.out.println("[3]  Dentista");
+                    System.out.print("Escolha: ");
+                    int tipo = scanner.nextInt();
+                    scanner.nextLine();
+                    if (tipo == 1)
+                        System.out.print("CRM: ");
+                    else if (tipo == 2) 
+                        System.out.print("CREFITO: ");
+                    else if (tipo == 3) 
+                        System.out.print("CRO: ");
+                    String registro = scanner.nextLine();
                     System.out.print("Nome: ");
                     String nomeProf = scanner.nextLine();
                     System.out.print("Telefone: ");
                     String telefone = scanner.nextLine();
+                    System.out.print("\n--- Lista de Especialidades ---");
+                    clinica.listarEspecialidades();
                     System.out.print("Codigo da especialidade: ");
                     int codEsp = scanner.nextInt();
                     scanner.nextLine();
-                    clinica.cadastrarProfissional(crm, nomeProf, telefone, codEsp);
+                    clinica.cadastrarProfissional(tipo, registro, nomeProf, telefone, codEsp);
                     break;
 
                 case 3:

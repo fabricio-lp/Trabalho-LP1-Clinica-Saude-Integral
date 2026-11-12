@@ -1,6 +1,9 @@
 package classes;
 
 import classes.pessoas.Paciente;
+import classes.profissionais.Dentista;
+import classes.profissionais.Fisioterapeuta;
+import classes.profissionais.Medico;
 import classes.profissionais.ProfissionalSaude;
 
 public class Clinica {
@@ -31,8 +34,9 @@ public class Clinica {
         System.out.println("Especialidade cadastrada: " + esp.toString());
     }
 
-    public void cadastrarProfissional(String crm, String nome, String telefone, int codigoEspecialidade) {
+    public void cadastrarProfissional(int tipo, String registro, String nome, String telefone, int codigoEspecialidade) {
         Especialidade esp = null;
+        ProfissionalSaude profissional;
         for (int i = 0; i < totalEspecialidades; i++) {
             if (especialidades[i].getCodigo() == codigoEspecialidade) {
                 esp = especialidades[i];
@@ -43,11 +47,26 @@ public class Clinica {
             System.out.println("ERRO: Especialidade nao encontrada. O profissional deve ter especialidade.");
             return;
         }
+        switch (tipo) {
+            case 1:
+                profissional = new Medico(registro, nome, telefone, esp);
+                break;
 
-        ProfissionalSaude prof = new ProfissionalSaude(crm, nome, telefone, esp);
-        profissionais[totalProfissionais] = prof;
+            case 2:
+                profissional = new Fisioterapeuta(registro, nome, telefone, esp);
+                break;
+
+            case 3:
+                profissional = new Dentista(registro, nome, telefone, esp);
+                break;
+        
+            default:
+                System.out.println("Tipo inválido!");
+                return;
+        }
+        profissionais[totalProfissionais] = profissional;
         totalProfissionais++;
-        System.out.println("Profissional cadastrado: " + prof.toString());
+        System.out.println("Profissional cadastrado: " + profissional.toString());
     }
 
     public void cadastrarPaciente(String cpf, String nome, String telefone, String dataNascimento) {

@@ -8,6 +8,7 @@ public class Fisioterapeuta extends ProfissionalSaude {
         super(nome, telefone, registroProfissional, especialidade);
     }
 
+    @Override
     public String getTipoRegistro(){
     return "CREFITO"; 
     }

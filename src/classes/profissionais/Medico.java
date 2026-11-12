@@ -8,6 +8,7 @@ public class Medico extends ProfissionalSaude {
         super(nome, telefone, registroProfissional, especialidade);
     }
 
+    @Override
     public String getTipoRegistro(){
     return "CRM"; 
     }
