@@ -76,7 +76,7 @@ public class Clinica {
         System.out.println("Paciente cadastrado: " + pac.toString());
     }
 
-    public void agendarConsulta(String cpfPaciente, String crmProfissional, String dataHora) {
+    public void agendarConsulta(String cpfPaciente, int tipo, String registroProfissional, String dataHora) {
         Paciente paciente = null;
         for (int i = 0; i < totalPacientes; i++) {
             String cpfAtual = pacientes[i].getCpf();
@@ -92,8 +92,8 @@ public class Clinica {
 
         ProfissionalSaude profissional = null;
         for (int i = 0; i < totalProfissionais; i++) {
-            String crmAtual = profissionais[i].getCrm();
-            if (crmAtual.equals(crmProfissional)) {
+            String registroAtual = profissionais[i].getRegistroProfissional();
+            if (registroAtual.equals(registroProfissional)) {
                 profissional = profissionais[i];
             }
         }
@@ -105,14 +105,14 @@ public class Clinica {
 
         for (int i = 0; i < totalConsultas; i++) {
             ProfissionalSaude profDaConsulta = consultas[i].getProfissional();
-            String crmDaConsulta = profDaConsulta.getCrm();
+            String registroDaConsulta = profDaConsulta.getRegistroProfissional();
             String horaDaConsulta = consultas[i].getDataHora();
             boolean estaCancelada = consultas[i].isCancelada();
 
-            boolean mesmoCrm = crmDaConsulta.equals(crmProfissional);
+            boolean mesmoRegistro = registroDaConsulta.equals(registroProfissional);
             boolean mesmoHorario = horaDaConsulta.equals(dataHora);
 
-            if (mesmoCrm && mesmoHorario && !estaCancelada) {
+            if (mesmoRegistro && mesmoHorario && !estaCancelada) {
                 System.out.println("ERRO: Profissional ja tem consulta nesse horario.");
                 return;
             }

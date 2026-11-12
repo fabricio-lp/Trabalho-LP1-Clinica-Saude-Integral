@@ -57,6 +57,7 @@ public class Main {
 
             switch (opcao) {
                 case 1:
+                    { 
                     System.out.println("\n--- Cadastro de Especialidade ---");
                     System.out.print("Nome da especialidade: ");
                     String nome = scanner.nextLine();
@@ -64,8 +65,10 @@ public class Main {
                     String descricao = scanner.nextLine();
                     clinica.cadastrarEspecialidade(nome, descricao);
                     break;
+                }
 
                 case 2:
+                    {
                     System.out.println("\n--- Cadastro de Profissional ---");
                     System.out.println("[1]  Médico");
                     System.out.println("[2]  Fisioterapeuta");
@@ -91,8 +94,10 @@ public class Main {
                     scanner.nextLine();
                     clinica.cadastrarProfissional(tipo, registro, nomeProf, telefone, codEsp);
                     break;
+                }
 
                 case 3:
+                    {
                     System.out.println("\n--- Cadastro de Paciente ---");
                     System.out.print("CPF: ");
                     String cpf = scanner.nextLine();
@@ -104,21 +109,35 @@ public class Main {
                     String dataNasc = scanner.nextLine();
                     clinica.cadastrarPaciente(cpf, nomePaciente, telefonePaciente, dataNasc);
                     break;
-
+                }
                 case 4:
+                    {
                     System.out.println("\n--- Agendamento de Consulta ---");
                     clinica.listarPacientes();
-                    clinica.listarProfissionais();
                     System.out.print("CPF do paciente: ");
                     String cpfConsulta = scanner.nextLine();
-                    System.out.print("CRM do profissional: ");
-                    String crmConsulta = scanner.nextLine();
+                    System.out.println("\n--- Lista de Profissionais ---");
+                    clinica.listarProfissionais();
+                    System.out.println("[1]  Médico");
+                    System.out.println("[2]  Fisioterapeuta");
+                    System.out.println("[3]  Dentista");
+                    System.out.print("Escolha: ");
+                    int tipo = scanner.nextInt();
+                    scanner.nextLine();
+                    if (tipo == 1)
+                        System.out.print("CRM: ");
+                    else if (tipo == 2) 
+                        System.out.print("CREFITO: ");
+                    else if (tipo == 3) 
+                        System.out.print("CRO: ");
+                    String registro = scanner.nextLine();
                     System.out.print("Data e hora (dd/MM/yyyy HH:mm): ");
                     String dataHora = scanner.nextLine();
-                    clinica.agendarConsulta(cpfConsulta, crmConsulta, dataHora);
+                    clinica.agendarConsulta(cpfConsulta, tipo, registro, dataHora);
                     break;
-
+                }
                 case 5:
+                    {
                     System.out.println("\n--- Concluir Consulta ---");
                     clinica.listarConsultasAgendadas();
                     System.out.print("Codigo da consulta: ");
@@ -128,8 +147,9 @@ public class Main {
                     String obs = scanner.nextLine();
                     clinica.concluirConsulta(codigo, obs);
                     break;
-
+                }
                 case 6:
+                    {
                     System.out.println("\n--- Cancelar Consulta ---");
                     clinica.listarConsultasAgendadas();
                     System.out.print("Codigo da consulta: ");
@@ -137,7 +157,7 @@ public class Main {
                     scanner.nextLine();
                     clinica.cancelarConsulta(codigoCancelamento);
                     break;
-
+                }
                 case 7:
                     clinica.listarEspecialidades();
                     break;
@@ -151,19 +171,21 @@ public class Main {
                     break;
 
                 case 10:
+                    {
                     System.out.println("\n--- Consultas por Paciente ---");
                     System.out.print("CPF do paciente: ");
                     String cpfPaciente = scanner.nextLine();
                     clinica.listarConsultasPorPaciente(cpfPaciente);
                     break;
-
+                }
                 case 11:
+                    {
                     System.out.println("\n--- Consultas por Profissional ---");
                     System.out.print("CRM do profissional: ");
                     String crmProfissional = scanner.nextLine();
                     clinica.listarConsultasPorProfissional(crmProfissional);
                     break;
-
+                }
                 case 12:
                     clinica.listarConsultasAgendadas();
                     break;
