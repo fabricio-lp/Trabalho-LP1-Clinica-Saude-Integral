@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Atualiza PROGRESSO.md e gera SVG a partir dos checkboxes do Checklist."""
+"""Atualiza README.md e gera SVG a partir dos checkboxes do Checklist."""
 from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-MD = ROOT / 'PROGRESSO.md'
+MD = ROOT / 'README.md'
 SVG = ROOT / 'assets' / 'progresso.svg'
 text = MD.read_text(encoding='utf-8')
 match = re.search(r'^## Checklist\s*$([\s\S]*?)(?=^## |\Z)', text, re.M)
