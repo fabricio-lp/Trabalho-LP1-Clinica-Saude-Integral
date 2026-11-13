@@ -1,0 +1,29 @@
+name: Atualizar progresso
+
+on:
+  push:
+    paths:
+      - PROGRESSO.md
+      - .github/workflows/progresso.yml
+      - .github/scripts/atualizar_progresso.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gerar indicador SVG
+        run: python3 .github/scripts/atualizar_progresso.py
+      - name: Publicar progresso
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PROGRESSO.md assets/progresso.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: atualiza indicador de progresso"
+            git push
+          fi
