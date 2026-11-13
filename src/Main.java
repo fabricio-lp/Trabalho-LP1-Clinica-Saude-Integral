@@ -181,9 +181,20 @@ public class Main {
                 case 11:
                     {
                     System.out.println("\n--- Consultas por Profissional ---");
-                    System.out.print("CRM do profissional: ");
-                    String crmProfissional = scanner.nextLine();
-                    clinica.listarConsultasPorProfissional(crmProfissional);
+                    System.out.println("[1]  Médico");
+                    System.out.println("[2]  Fisioterapeuta");
+                    System.out.println("[3]  Dentista");
+                    System.out.print("Escolha: ");
+                    int tipo = scanner.nextInt();
+                    scanner.nextLine();
+                    if (tipo == 1)
+                        System.out.print("CRM: ");
+                    else if (tipo == 2) 
+                        System.out.print("CREFITO: ");
+                    else if (tipo == 3) 
+                        System.out.print("CRO: ");
+                    String registro = scanner.nextLine();
+                    clinica.listarConsultasPorProfissional(tipo, registro);
                     break;
                 }
                 case 12:

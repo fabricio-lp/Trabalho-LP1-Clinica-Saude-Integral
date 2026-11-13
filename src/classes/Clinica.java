@@ -180,12 +180,12 @@ public class Clinica {
         }
     }
 
-    public void listarConsultasPorProfissional(String crm) {
+    public void listarConsultasPorProfissional(int tipo, String registro) {
         System.out.println("\n--- Consultas do Profissional ---");
         for (int i = 0; i < totalConsultas; i++) {
             ProfissionalSaude profDaConsulta = consultas[i].getProfissional();
-            String crmDaConsulta = profDaConsulta.getCrm();
-            if (crmDaConsulta.equals(crm)) {
+            String registroDaConsulta = profDaConsulta.getRegistroProfissional();
+            if (registroDaConsulta.equals(registro)) {
                 System.out.println("  " + consultas[i].toString());
             }
         }
