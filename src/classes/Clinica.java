@@ -151,9 +151,14 @@ public class Clinica {
     }
 
     public void listarProfissionais() {
-        System.out.println("\n--- Profissionais ---");
+        String[] registros = {"CRM", "CRO", "CREFITO"};
+        String[] categorias = {"Medico", "Dentista", "Fisioterapeuta"};
+        for (int j = 0; j < categorias.length; j++) {
+        System.out.println("\n--- " + categorias[j] + " ---");
         for (int i = 0; i < totalProfissionais; i++) {
+            if (registros[i].equals(profissionais[i].getTipoRegistro()))
             System.out.println("  " + profissionais[i].toString());
+            }
         }
     }
 
