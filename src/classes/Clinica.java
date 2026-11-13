@@ -49,15 +49,15 @@ public class Clinica {
         }
         switch (tipo) {
             case 1:
-                profissional = new Medico(registro, nome, telefone, esp);
+                profissional = new Medico(nome, telefone, registro, esp);
                 break;
 
             case 2:
-                profissional = new Fisioterapeuta(registro, nome, telefone, esp);
+                profissional = new Fisioterapeuta(nome, telefone, registro, esp);
                 break;
 
             case 3:
-                profissional = new Dentista(registro, nome, telefone, esp);
+                profissional = new Dentista(nome, telefone, registro, esp);
                 break;
         
             default:
@@ -89,6 +89,7 @@ public class Clinica {
             System.out.println("ERRO: Paciente nao encontrado. Nao e permitido agendar para paciente inexistente.");
             return;
         }
+
 
         ProfissionalSaude profissional = null;
         for (int i = 0; i < totalProfissionais; i++) {
@@ -156,7 +157,7 @@ public class Clinica {
         for (int j = 0; j < categorias.length; j++) {
         System.out.println("\n--- " + categorias[j] + " ---");
         for (int i = 0; i < totalProfissionais; i++) {
-            if (registros[i].equals(profissionais[i].getTipoRegistro()))
+            if (registros[j].equals(profissionais[i].getTipoRegistro()))
             System.out.println("  " + profissionais[i].toString());
             }
         }
@@ -180,7 +181,7 @@ public class Clinica {
         }
     }
 
-    public void listarConsultasPorProfissional(int tipo, String registro) {
+    public void listarConsultasPorProfissional(String registro) {
         System.out.println("\n--- Consultas do Profissional ---");
         for (int i = 0; i < totalConsultas; i++) {
             ProfissionalSaude profDaConsulta = consultas[i].getProfissional();

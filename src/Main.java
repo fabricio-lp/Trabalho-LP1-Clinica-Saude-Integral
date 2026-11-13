@@ -194,7 +194,7 @@ public class Main {
                     else if (tipo == 3) 
                         System.out.print("CRO: ");
                     String registro = scanner.nextLine();
-                    clinica.listarConsultasPorProfissional(tipo, registro);
+                    clinica.listarConsultasPorProfissional(registro);
                     break;
                 }
                 case 12:
