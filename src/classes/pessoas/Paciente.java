@@ -28,7 +28,10 @@ public class Paciente extends Pessoa {
     }
 
     public String toString() {
-        return "Paciente [CPF= " + cpf + ", Nome= " + getNome() + ", Telefone= " + getTelefone()
-                + ", Nascimento= " + dataNascimento + "]";
+        return "Paciente"
+            + "\n    Nome:       " + getNome()
+            + "\n    CPF:        " + cpf
+            + "\n    Telefone:   " + getTelefone()
+            + "\n    Nascimento: " + dataNascimento;
     }
 }

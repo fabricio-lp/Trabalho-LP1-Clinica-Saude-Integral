@@ -37,6 +37,8 @@ public class Especialidade {
     }
 
     public String toString() {
-        return "Especialidade [Codigo= " + codigo + ", Nome= " + nome + ", Descricao= " + descricao + "]";
+        return "Especialidade #" + codigo
+            + "\n    Nome:      " + nome
+            + "\n    Descricao: " + descricao;
     }
 }

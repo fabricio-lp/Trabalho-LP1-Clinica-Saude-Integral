@@ -13,4 +13,9 @@ public class Fisioterapeuta extends ProfissionalSaude {
     return "CREFITO"; 
     }
 
+    @Override
+    public String realizarAtendimento() {
+        return getNome() + " realiza consulta clinica, avalia sintomas e prescreve medicamentos.";
+    }
+
 }

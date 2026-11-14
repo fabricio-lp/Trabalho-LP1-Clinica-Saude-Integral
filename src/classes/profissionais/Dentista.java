@@ -12,5 +12,9 @@ public class Dentista extends ProfissionalSaude {
     public String getTipoRegistro(){
     return "CRO"; 
     }
+    @Override
+    public String realizarAtendimento() {
+        return getNome() + " realiza avaliacao odontologica e procedimentos bucais.";
+    }
 
 }

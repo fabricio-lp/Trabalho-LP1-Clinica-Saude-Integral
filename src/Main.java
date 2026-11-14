@@ -48,6 +48,7 @@ public class Main {
             System.out.println("  [12] Listar Consultas Agendadas");
             System.out.println("  [13] Listar Todas as Consultas");
             System.out.println("  [14] Relatorio Geral");
+            System.out.println("  [15] Demonstrar Atendimentos");
             System.out.println("  [0]  Sair");
             System.out.println("===================================================");
 
@@ -220,6 +221,11 @@ public class Main {
 
                 case 14:
                     clinica.exibirRelatorio();
+                    voltarMenu();
+                    break;
+                
+                case 15:
+                    clinica.listarAtendimentos();
                     voltarMenu();
                     break;
 

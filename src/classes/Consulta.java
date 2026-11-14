@@ -104,18 +104,15 @@ public class Consulta {
     }
 
     public String toString() {
-        String texto = "Consulta [Codigo= " + codigo
-                + ", Paciente= " + paciente.getNome()
-                + ", Profissional= " + profissional.getNome()
+        String texto = "Consulta #" + codigo + "  [" + getStatus().toUpperCase() + "]"
+                + "\n    Paciente:     " + paciente.getNome()
+                + "\n    Profissional: " + profissional.getNome()
                 + " (" + profissional.getEspecialidade().getNome() + ")"
-                + ", Data/Hora= " + dataHora
-                + ", Status= " + getStatus();
+                + "\n    Data/Hora:    " + dataHora;
 
         if (realizada) {
-            texto = texto + ", Obs=" + observacao;
+            texto = texto + "\n    Observacao:   " + observacao;
         }
-
-        texto = texto + "]";
         return texto;
     }
 }

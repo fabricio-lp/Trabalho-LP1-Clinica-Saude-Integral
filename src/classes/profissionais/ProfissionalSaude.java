@@ -2,8 +2,9 @@ package classes.profissionais;
 
 import classes.Especialidade;
 import classes.pessoas.Pessoa;
+import classes.interfaces.Atendivel;
 
-public abstract class ProfissionalSaude extends Pessoa{
+public abstract class ProfissionalSaude extends Pessoa implements Atendivel{
 
     private String registroProfissional;
     private Especialidade especialidade;
@@ -37,7 +38,14 @@ public abstract class ProfissionalSaude extends Pessoa{
     }
 
     public String toString() {
-        return "Profissional [" + getRegistroFormatado() + ", Nome= " + getNome() + ", Telefone= " + getTelefone()
-                + ", Especialidade= " + especialidade.getNome() + "]";
+        return getNome()
+                + "\n    " + getTipoRegistro() + ":" + registroProfissional
+                + "\n    Especialidade: " + especialidade.getNome()
+                + "\n    Telefone: " + getTelefone();
+    }
+    @Override
+    public String getDescricao() {
+        return getTipoRegistro() + " " + registroProfissional + " - " + getNome()
+                + " (" + especialidade.getNome() + ")";
     }
 }
