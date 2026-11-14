@@ -1,5 +1,6 @@
 package classes.interfaces;
 
-public class Atendivel {
-    
+public interface Atendivel {
+    String realizarAtendimento();
+    String getDescricao();
 }
