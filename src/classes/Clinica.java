@@ -22,6 +22,37 @@ public class Clinica {
     private int contadorCodigoConsulta = 0;
     private int contadorCodigoEspecialidade = 0;
 
+    public void carregarDadosTeste() {
+        System.out.println("\n>>> Carregando dados de teste...");
+
+        cadastrarEspecialidade("Cardiologia", "Doencas do coracao");
+        cadastrarEspecialidade("Clinica Geral", "Atendimento geral e preventivo");
+        cadastrarEspecialidade("Ortodontia", "Correcao de dentes e arcada");
+        cadastrarEspecialidade("Fisioterapia Esportiva", "Reabilitacao de lesoes");
+
+        cadastrarProfissional(1, "12345", "Dr. Carlos Silva", "(77) 99911-1111", 1);
+        cadastrarProfissional(1, "67890", "Dra. Marina Souza", "(77) 99922-2222", 2);
+        cadastrarProfissional(2, "111", "Paulo Lima", "(77) 99933-3333", 4);
+        cadastrarProfissional(3, "222", "Dra. Julia Rocha", "(77) 99944-4444", 3);
+
+        cadastrarPaciente("111.111.111-11", "Ana Pereira", "(77) 98811-1111", "15/03/1990");
+        cadastrarPaciente("222.222.222-22", "Bruno Costa", "(77) 98822-2222", "22/07/1985");
+        cadastrarPaciente("333.333.333-33", "Carla Mendes", "(77) 98833-3333", "05/12/2001");
+        cadastrarPaciente("444.444.444-44", "Diego Santos", "(77) 98844-4444", "30/09/1978");
+
+        agendarConsulta("111.111.111-11", 1, "12345", "10/11/2026 09:00"); // 1 - Ana + Dr. Carlos
+        agendarConsulta("222.222.222-22", 1, "67890", "10/11/2026 10:00"); // 2 - Bruno + Dra. Marina
+        agendarConsulta("111.111.111-11", 3, "222", "12/11/2026 14:00");   // 3 - Ana + Dra. Julia
+        agendarConsulta("111.111.111-11", 2, "111", "20/11/2026 08:30");   // 4 - Ana + Paulo
+        agendarConsulta("333.333.333-33", 1, "12345", "21/11/2026 09:00"); // 5 - Carla + Dr. Carlos
+        agendarConsulta("444.444.444-44", 3, "222", "22/11/2026 15:00");   // 6 - Diego + Dra. Julia
+
+        concluirConsulta(1, "Paciente com pressao normal. Retorno em 6 meses.");
+        concluirConsulta(2, "Check-up completo, exames solicitados.");
+        cancelarConsulta(3);
+
+        System.out.println(">>> Dados de teste carregados!\n");
+    }
     public Clinica(String nome) {
         this.nome = nome;
     }
@@ -171,15 +202,18 @@ public class Clinica {
     }
 
     public void listarConsultasPorPaciente(String cpf) {
-        System.out.println("\n--- Consultas do Paciente ---");
-        for (int i = 0; i < totalConsultas; i++) {
-            Paciente pacDaConsulta = consultas[i].getPaciente();
-            String cpfDaConsulta = pacDaConsulta.getCpf();
-            if (cpfDaConsulta.equals(cpf)) {
-                System.out.println("  " + consultas[i].toString());
-            }
-        }
+    System.out.println("\n--- Historico de Consultas do Paciente ---");
+    int encontradas = listarConsultasPorPacienteRecursivo(cpf, 0);
+
+    if (encontradas == 0) {
+        System.out.println("  Nenhuma consulta encontrada para este paciente.");
+    } else {
+        System.out.println("  Total de consultas no historico: " + encontradas);
+        System.out.println("  Realizadas: " + contarConsultasPacientePorStatusRecursivo(cpf, "Realizada", 0));
+        System.out.println("  Canceladas: " + contarConsultasPacientePorStatusRecursivo(cpf, "Cancelada", 0));
+        System.out.println("  Agendadas:  " + contarConsultasPacientePorStatusRecursivo(cpf, "Agendada", 0));
     }
+}
 
     public void listarConsultasPorProfissional(String registro) {
         System.out.println("\n--- Consultas do Profissional ---");
@@ -249,6 +283,34 @@ public class Clinica {
         return contagem + contarConsultasRealizadasRecursivo(indice + 1);
     }
 
+    public int listarConsultasPorPacienteRecursivo(String cpf, int indice) {
+        if (indice >= totalConsultas) {
+            return 0;
+        }
+        int contagem = 0;
+        Paciente pacDaConsulta = consultas[indice].getPaciente();
+        if (pacDaConsulta.getCpf().equals(cpf)) {
+            System.out.println("  " + consultas[indice].toString());
+            contagem = 1;
+        }
+        return contagem + listarConsultasPorPacienteRecursivo(cpf, indice + 1);
+    }
+
+    public int contarConsultasPacientePorStatusRecursivo(String cpf, String status, int indice) {
+        if (indice >= totalConsultas) {
+            return 0;
+        }
+
+        int contagem = 0;
+        boolean mesmoPaciente = consultas[indice].getPaciente().getCpf().equals(cpf);
+        boolean mesmoStatus = consultas[indice].getStatus().equals(status);
+
+        if (mesmoPaciente && mesmoStatus) {
+            contagem = 1;
+        }
+
+        return contagem + contarConsultasPacientePorStatusRecursivo(cpf, status, indice + 1);
+    }
     public int contarConsultasCanceladasRecursivo(int indice) {
         if (indice >= totalConsultas) {
             return 0;
