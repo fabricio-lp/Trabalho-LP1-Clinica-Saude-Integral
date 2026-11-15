@@ -13,4 +13,9 @@ public class Medico extends ProfissionalSaude {
     return "CRM"; 
     }
     
+    @Override
+    public String realizarAtendimento() {
+        return getNome() + " realiza consulta clinica, avalia sintomas e prescreve medicamentos.";
+    }
+    
 }

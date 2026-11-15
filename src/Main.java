@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Clinica clinica = new Clinica("Clinica Saude Integral");
-
+        clinica.carregarDadosTeste();
         int opcao = -1;
 
         System.out.println("===================================================");
@@ -32,7 +32,7 @@ public class Main {
 
         do {
             System.out.println("\n===================================================");
-            System.out.println("              MENU PRINCIPAL");
+            System.out.println("                  MENU PRINCIPAL");
             System.out.println("===================================================");
             System.out.println("  [1]  Cadastrar Especialidade");
             System.out.println("  [2]  Cadastrar Profissional");
@@ -48,6 +48,7 @@ public class Main {
             System.out.println("  [12] Listar Consultas Agendadas");
             System.out.println("  [13] Listar Todas as Consultas");
             System.out.println("  [14] Relatorio Geral");
+            System.out.println("  [15] Demonstrar Atendimentos");
             System.out.println("  [0]  Sair");
             System.out.println("===================================================");
 
@@ -64,6 +65,7 @@ public class Main {
                     System.out.print("Descricao: ");
                     String descricao = scanner.nextLine();
                     clinica.cadastrarEspecialidade(nome, descricao);
+                    voltarMenu();
                     break;
                 }
 
@@ -93,6 +95,7 @@ public class Main {
                     int codEsp = scanner.nextInt();
                     scanner.nextLine();
                     clinica.cadastrarProfissional(tipo, registro, nomeProf, telefone, codEsp);
+                    voltarMenu();
                     break;
                 }
 
@@ -108,6 +111,7 @@ public class Main {
                     System.out.print("Data de nascimento (dd/MM/yyyy): ");
                     String dataNasc = scanner.nextLine();
                     clinica.cadastrarPaciente(cpf, nomePaciente, telefonePaciente, dataNasc);
+                    voltarMenu();
                     break;
                 }
                 case 4:
@@ -134,6 +138,7 @@ public class Main {
                     System.out.print("Data e hora (dd/MM/yyyy HH:mm): ");
                     String dataHora = scanner.nextLine();
                     clinica.agendarConsulta(cpfConsulta, tipo, registro, dataHora);
+                    voltarMenu();
                     break;
                 }
                 case 5:
@@ -146,6 +151,7 @@ public class Main {
                     System.out.print("Observacao medica: ");
                     String obs = scanner.nextLine();
                     clinica.concluirConsulta(codigo, obs);
+                    voltarMenu();
                     break;
                 }
                 case 6:
@@ -156,18 +162,22 @@ public class Main {
                     int codigoCancelamento = scanner.nextInt();
                     scanner.nextLine();
                     clinica.cancelarConsulta(codigoCancelamento);
+                    voltarMenu();
                     break;
                 }
                 case 7:
                     clinica.listarEspecialidades();
+                    voltarMenu();
                     break;
 
                 case 8:
                     clinica.listarProfissionais();
+                    voltarMenu();
                     break;
 
                 case 9:
                     clinica.listarPacientes();
+                    voltarMenu();
                     break;
 
                 case 10:
@@ -176,6 +186,7 @@ public class Main {
                     System.out.print("CPF do paciente: ");
                     String cpfPaciente = scanner.nextLine();
                     clinica.listarConsultasPorPaciente(cpfPaciente);
+                    voltarMenu();
                     break;
                 }
                 case 11:
@@ -195,18 +206,27 @@ public class Main {
                         System.out.print("CRO: ");
                     String registro = scanner.nextLine();
                     clinica.listarConsultasPorProfissional(registro);
+                    voltarMenu();
                     break;
                 }
                 case 12:
                     clinica.listarConsultasAgendadas();
+                    voltarMenu();
                     break;
 
                 case 13:
                     clinica.listarTodasConsultas();
+                    voltarMenu();
                     break;
 
                 case 14:
                     clinica.exibirRelatorio();
+                    voltarMenu();
+                    break;
+                
+                case 15:
+                    clinica.listarAtendimentos();
+                    voltarMenu();
                     break;
 
                 case 0:
@@ -215,6 +235,7 @@ public class Main {
 
                 default:
                     System.out.println("\nOpcao invalida. Tente novamente.");
+                    voltarMenu();
                     break;
             }
 
@@ -222,4 +243,9 @@ public class Main {
 
         scanner.close();
     }
+    public static void voltarMenu() {
+        IO.println("\nPressione ENTER para voltar ao menu.");
+        IO.readln();
+    }
+
 }
