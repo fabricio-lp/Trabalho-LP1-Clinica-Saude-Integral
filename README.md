@@ -3,7 +3,7 @@
 ![Barra de progresso do projeto](assets/progresso.svg)
 
 <!-- PROGRESSO-INICIO -->
-**Progresso: 50%** · 4/8 tarefas concluídas
+**Progresso: 100%** · 8/8 tarefas concluídas
 <!-- PROGRESSO-FIM -->
 
 ## Checklist
