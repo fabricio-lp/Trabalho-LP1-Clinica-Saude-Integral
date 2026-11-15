@@ -12,7 +12,7 @@
 - [x] Criar Médico, Dentista e Fisioterapeuta
 - [x] Adaptar o cadastro de profissionais
 - [x] Listar profissionais por categoria
-- [ ] Finalizar buscas e agendamentos
-- [ ] Implementar a interface `Atendivel`
-- [ ] Criar histórico recursivo de consultas por paciente
-- [ ] Testar e corrigir o sistema
+- [X] Finalizar buscas e agendamentos
+- [X] Implementar a interface `Atendivel`
+- [X] Criar histórico recursivo de consultas por paciente
+- [X] Testar e corrigir o sistema
